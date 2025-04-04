@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 
 const frameMetadata = {
   version: 'next',
-  imageUrl: 'https://86c6-108-27-42-53.ngrok-free.app/images/hello-world.png',
+  imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/hello-world.png',
   button: {
     title: '👋 Say Hello',
     action: {
       type: 'launch_frame',
-      url: 'https://86c6-108-27-42-53.ngrok-free.app',
+      url: 'https://hello-world-dusky-tau.vercel.app',
       name: 'Hello World',
-      splashImageUrl: 'https://86c6-108-27-42-53.ngrok-free.app/images/splash.png',
+      splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/splash.png',
       splashBackgroundColor: '#fdebc9'
     }
   }
