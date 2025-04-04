@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const frameMetadata = {
   version: 'next',
-  imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/hello-world.png',
+  imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/cursor-command.gif',
   button: {
     title: '👋 Say Hello',
     action: {
