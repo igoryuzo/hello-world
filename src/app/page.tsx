@@ -1,13 +1,10 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Hello World Mini App',
-  description: 'A simple Hello World mini app for Farcaster',
-}
+import { useEffect, useState } from 'react'
 
 const frameMetadata = {
   version: 'next',
-  imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/cursor-command.gif',
+  imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/hello-world-type.gif',
   button: {
     title: '👋 Say Hello',
     action: {
@@ -21,6 +18,26 @@ const frameMetadata = {
 }
 
 export default function Home() {
+  const [displayText, setDisplayText] = useState('')
+  const [showEmoji, setShowEmoji] = useState(false)
+  const text = 'Hello World! '
+
+  useEffect(() => {
+    let i = 0
+    const intervalId = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.slice(0, i + 1))
+        i++
+      } else {
+        clearInterval(intervalId)
+        // Show emoji after text is complete
+        setShowEmoji(true)
+      }
+    }, 100)
+
+    return () => clearInterval(intervalId)
+  }, [])
+
   return (
     <>
       <head>
@@ -28,14 +45,22 @@ export default function Home() {
       </head>
       <main className="flex min-h-screen flex-col items-center justify-center p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm">
-          <h1 className="text-4xl font-bold text-center mb-8">
-            Hello World! 👋
+          <h1 className="text-4xl text-center">
+            {displayText}{showEmoji && '👋'}
+            <span className="cursor">|</span>
           </h1>
-          <p className="text-center text-xl">
-            Welcome to my first Farcaster mini app!
-          </p>
         </div>
       </main>
+      <style jsx>{`
+        .cursor {
+          animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+          from, to { opacity: 1 }
+          50% { opacity: 0 }
+        }
+      `}</style>
     </>
   )
 }
