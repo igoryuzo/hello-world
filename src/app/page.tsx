@@ -6,13 +6,13 @@ const frameMetadata = {
   version: 'next',
   imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/hello-world.gif',
   button: {
-    title: '👋 Say Hello',
+    title: 'Learn To Build A Mini App',
     action: {
       type: 'launch_frame',
       url: 'https://hello-world-dusky-tau.vercel.app',
       name: 'Hello World',
-      splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/splash.png',
-      splashBackgroundColor: '#fdebc9'
+      splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/farcaster-logo.png',
+      splashBackgroundColor: '#f3f0fa'
     }
   }
 }
