@@ -49,8 +49,8 @@ export default function Home() {
       </head>
       <main className="flex min-h-screen flex-col items-center justify-center p-24" style={{ backgroundColor: '#8963d2' }}>
         <div className="z-10 max-w-5xl w-full items-center justify-center text-sm">
-          <h1 className="text-4xl text-center relative text-white" style={{ fontFamily: 'Courier, monospace' }}>
-            <span>{displayText}</span>
+          <h1 className="text-4xl text-center relative text-white" style={{ fontFamily: 'Courier, monospace', lineHeight: '1', height: '1em' }}>
+            <span style={{ verticalAlign: 'middle' }}>{displayText}</span>
             <span className={`cursor absolute ${isTyping ? 'typing' : ''}`}>|</span>
           </h1>
         </div>
@@ -63,6 +63,10 @@ export default function Home() {
           transition: left 0.1s ease;
           color: white;
           font-family: Courier, monospace;
+          top: 0;
+          height: 100%;
+          display: inline-flex;
+          align-items: center;
         }
 
         .cursor.typing {
