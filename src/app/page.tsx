@@ -1,83 +1,68 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Steps } from "@/components/steps"
+import { TypingAnimation } from "@/components/typing-animation"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const frameMetadata = {
   version: 'next',
   imageUrl: 'https://hello-world-dusky-tau.vercel.app/images/hello-world.gif',
   button: {
-    title: 'Learn To Build A Mini App',
+    title: 'Build Mini App',
     action: {
       type: 'launch_frame',
       url: 'https://hello-world-dusky-tau.vercel.app',
       name: 'Hello World',
-      splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/farcaster-logo.png',
-      splashBackgroundColor: '#855dcd'
+      splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/splash.png',
+      splashBackgroundColor: '#fdebc9'
     }
   }
 }
 
 export default function Home() {
-  const [displayText, setDisplayText] = useState('')
-  const [isTyping, setIsTyping] = useState(false)
-  const text = 'hello, world'
-
-  useEffect(() => {
-    // Add initial delay before typing starts
-    const startDelay = setTimeout(() => {
-      setIsTyping(true)
-      let i = 0
-      const intervalId = setInterval(() => {
-        if (i < text.length) {
-          setDisplayText(text.slice(0, i + 1))
-          i++
-        } else {
-          clearInterval(intervalId)
-        }
-      }, 100)
-
-      return () => clearInterval(intervalId)
-    }, 1000) // Wait 1 second before starting to type
-
-    return () => clearTimeout(startDelay)
-  }, [])
-
   return (
     <>
       <head>
         <meta name="fc:frame" content={JSON.stringify(frameMetadata)} />
       </head>
-      <main className="flex min-h-screen flex-col items-center justify-center p-24" style={{ backgroundColor: '#8963d2' }}>
-        <div className="z-10 max-w-5xl w-full items-center justify-center text-sm">
-          <h1 className="text-4xl text-center relative text-white" style={{ fontFamily: 'Courier, monospace', lineHeight: '1', height: '1em' }}>
-            <span style={{ verticalAlign: 'middle' }}>{displayText}</span>
-            <span className={`cursor absolute ${isTyping ? 'typing' : ''}`}>|</span>
+      <main className="flex min-h-screen flex-col p-4 pb-20">
+        <Header />
+
+        <div className="mt-6 mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            Vibe code a{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 px-1 text-white">
+                <TypingAnimation text="Hello World" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-400 rounded-md transform -rotate-1"></span>
+            </span>{" "}
+            Mini App
           </h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">A step-by-step guide to creating a Farcaster mini app by prompting an LLM.</p>
         </div>
+
+        <div className="space-y-8">
+          <section>
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">What are Farcaster Mini Apps?</h2>
+            <p className="text-gray-700 dark:text-gray-300">
+              Mini Apps enable developers to distribute native-like apps to Farcaster users. They are the easiest way to
+              deliver engaging, high-retention, and easy-to-monetize applications.
+            </p>
+            <div className="mt-4 bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-100 dark:border-purple-800">
+              <p className="text-sm text-purple-800 dark:text-purple-300">
+                <strong>Note:</strong> Vibe coding lets anyone create software using natural language prompts. This guide
+                is designed for both developers and non-developers to help them build with the power of AI models.
+              </p>
+            </div>
+          </section>
+
+          <Steps />
+        </div>
+
+        <Footer />
       </main>
-      <style jsx>{`
-        .cursor {
-          animation: blink 1s step-end infinite;
-          left: 50%;
-          transform: translateX(-50%);
-          transition: left 0.1s ease;
-          color: white;
-          font-family: Courier, monospace;
-          top: 0;
-          height: 100%;
-          display: inline-flex;
-          align-items: center;
-        }
-
-        .cursor.typing {
-          left: calc(50% + ${displayText.length * 12}px);
-        }
-
-        @keyframes blink {
-          from, to { opacity: 1 }
-          50% { opacity: 0 }
-        }
-      `}</style>
     </>
   )
 }
