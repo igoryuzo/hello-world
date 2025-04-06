@@ -133,7 +133,7 @@ export function Steps() {
           </button>
 
           {expandedStep === step.id && (
-            <div className="p-4 space-y-4">
+            <div className="p-4 space-y-4 max-h-[70vh] overflow-y-auto">
               {step.description && <p className="text-gray-700">{step.description}</p>}
 
               {step.prompt && step.id !== 1 && (
