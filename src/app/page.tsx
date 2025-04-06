@@ -15,7 +15,7 @@ const frameMetadata = {
       url: 'https://hello-world-dusky-tau.vercel.app',
       name: 'Hello World',
       splashImageUrl: 'https://hello-world-dusky-tau.vercel.app/images/farcaster-logo.png',
-      splashBackgroundColor: '#fdebc9'
+      splashBackgroundColor: '#855dcd'
     }
   }
 }
